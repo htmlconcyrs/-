@@ -1,0 +1,127 @@
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include <string>
+using namespace std;
+int room_1(string& igr, int a)
+{
+	cout << "------------------"<< endl;
+	cout << "|       {}       |" << endl;
+	cout << "|    " << igr[2] << " {  }      |" << endl;
+	cout << "|     {    }"<< igr[0]<<"    |" << endl;
+	cout << "|   " << igr[1] << "{      }    |" << endl;
+	cout << "/4      []       |" << endl;
+	cout << "|                |" << endl;
+	cout << "------------------" << endl;
+	return 0;
+}
+
+int room_2(string igr, int a)
+{
+	cout << "------------------" << endl;
+	cout << "|qq          [][]|" << endl;
+	cout << "|qq        [][][]|" << endl;
+	cout << "|                |" << endl;
+	cout << "|           99   |" << endl;
+	cout << "/4     b   99999 |" << endl;
+	cout << "|     bbb        |" << endl;
+	cout << "------------------" << endl;
+	return 0;
+}
+
+//int room_3(string igr, int a)
+
+
+int room_4(string& igr)
+{
+	cout << "---------/--------" << endl;
+	cout << "|        3       |" << endl;
+	cout << "|                |" << endl;
+	cout << "|                |" << endl;
+	cout << "/1             2 /" << endl;
+	cout << "|                |" << endl;
+	cout << "|      [х]       |" << endl;
+	cout << "------------------" << endl;
+	return 0;
+}
+
+int diolog(string& igr,int a)
+{
+	int b, c;
+	char v;
+	if (a == 1)
+	{
+		room_1(igr, a);
+	}
+	if (a == 2)
+	{
+		room_2(igr, a);
+		cout << "x:Уу.. сколько муссора. За какой кучей находиться игрушка?" << endl;
+		cin >> v;
+		if (v != '9')
+		{
+			cout << "x:Тут пусто." << endl;
+			room_2(igr, a);
+			diolog(igr, a);
+		}
+		if (v == '9')
+		{
+			cout << "x:Ура.. тут ы" << endl;
+			
+		}
+	}
+	if (a == 3)
+	{
+		//room_3(igr, a);
+	}
+	if (a == 4)
+	{
+		return 0;
+	}
+	if (a == 5)
+	{
+		cout << "x:Привет, я работник этого осабника." << endl;
+		cout << "?:Что здесь произошло?" << endl;
+		cout << "x:я не знаю, но когда я пртшёл сдесь была надпись собери все игрушки и укрась ёлку." << endl;
+		cout << "x:У меня кстати есть одна игрушка, но я дам её тебе если поможешь мне решить пару задачь." << endl;
+		cout << "1-уйти. 2-помочь." << endl;
+		cin >> b;
+		if (b == 1)
+		{
+			room_4(igr);
+		}
+		if (b == 2)
+		{
+			cout << "x:12+3" << endl;
+			cin >> c;
+			if (c != 15) 
+			{
+				cout << "Не правильно.";
+				room_4(igr);
+				cin >> a;
+				diolog(igr, a);
+			}
+			if (c == 15)
+			{
+				cout << "Молодец держи е" << endl;
+				igr[0] = 'е';
+				room_4(igr);
+				cin >> a;
+				diolog(igr, a);
+			}
+		}
+	}
+	return 0;
+}
+
+int main()
+{    
+	int a, b, c;
+	string igr;
+	igr = "      ";
+setlocale(0, "");
+room_4(igr);
+cout << "Что мне сделать? \n 1-войти в комнату 1. 2-войти в комнату 2. 3-войти в комнату 3. 5-поговорить с x."<< endl;
+cin >> a;
+diolog(igr, a);
+}
